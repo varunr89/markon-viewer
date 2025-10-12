@@ -50,8 +50,8 @@ export const createToast =
 // Clipboard utilities
 export const copySmart = async (text, notify) => {
 	const fallback = () => {
-		const ta = el('textarea', { 
-			value: text, 
+		const ta = el('textarea', {
+			value: text,
 			style: 'position:fixed;top:-9999px;left:-9999px;opacity:0;width:1px;height:1px;border:none;outline:none;resize:none;overflow:hidden;'
 		})
 		document.body.appendChild(ta)
@@ -95,13 +95,36 @@ export const openFileText = () =>
 
 
 // Theme utilities
-export const getPrefTheme = () =>
-	localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark')
+export const getThemesList = () => ['panda', 'muted', 'nord', 'monokai', 'dracula']
 
-export const applyTheme = theme => {
-	const isLight = theme === 'light'
-	document.documentElement.classList.toggle('light', isLight)
-	localStorage.setItem('theme', isLight ? 'light' : 'dark')
+export const getPrefTheme = () => {
+	const theme = localStorage.getItem('theme-name') || 'panda'
+	const mode = localStorage.getItem('theme-mode') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark')
+
+	// Ensure we have valid values
+	if (!theme || theme === 'undefined') {
+		localStorage.setItem('theme-name', 'panda')
+		return { theme: 'panda', mode }
+	}
+
+	return { theme, mode }
+}
+
+export const applyTheme = async (themeName, mode) => {
+	// Ensure we have valid values
+	const validTheme = themeName && themeName !== 'undefined' ? themeName : 'panda'
+	const validMode = mode && mode !== 'undefined' ? mode : 'dark'
+
+	const html = document.documentElement
+	html.setAttribute('data-theme', validTheme)
+	html.setAttribute('data-mode', validMode)
+	html.classList.toggle('light', validMode === 'light')
+	localStorage.setItem('theme-name', validTheme)
+	localStorage.setItem('theme-mode', validMode)
+
+	// Update highlight.js theme
+	const { setHlTheme } = await import('./syntax.js')
+	setHlTheme(validMode)
 }
 
 // Spell check utility
@@ -127,5 +150,4 @@ export const createEventHandler = (element, event, handler, options = {}) => {
 
 export const createClickHandler = (element, handler) => createEventHandler(element, 'click', handler)
 export const createPointerHandler = (element, handler) => createEventHandler(element, 'pointerdown', handler)
-export const createKeyHandler = (element, handler) => createEventHandler(element, 'keydown', handler)
 

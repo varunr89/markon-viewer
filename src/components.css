@@ -191,175 +191,237 @@ button {
   }
 }
 
-/* ===== HELP SYSTEM COMPONENTS ===== */
+/* ===== SETTINGS SYSTEM COMPONENTS ===== */
 
-/* Help system container */
-#help-system {
-  position: fixed;
-  inset: 0;
+/* Settings dialog - native HTML dialog element */
+#settings-system {
+  background: var(--bg-light);
+  border-radius: var(--radius);
+  padding: 32px;
+  max-width: 800px;
+  width: 90vw;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-strong);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--text-alpha);
+  color: var(--text);
+
+  /* Remove default dialog styling */
+  &::backdrop {
+    background: var(--bg-alpha);
+    backdrop-filter: blur(10px);
+  }
+}
+
+/* Settings header */
+.settings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.settings-title {
+  margin: 0;
+  color: var(--brand);
+  font-size: 24px;
+  font-weight: 700;
+  font-family: "Monaspace Krypton", system-ui, Helvetica, Arial, sans-serif;
+}
+
+.settings-close {
+  background: var(--text-alpha);
+  border: none;
+  color: var(--comment);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  font-size: 20px;
+  width: 36px;
+  height: 36px;
   display: grid;
   place-items: center;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: var(--accent-alpha);
+    color: var(--accent);
+    transform: scale(1.1);
+  }
+}
+
+/* Settings content */
+.settings-content {
+  display: grid;
+  gap: 32px;
+}
+
+.settings-section {
+  display: grid;
+  gap: 16px;
+}
+
+.settings-section-title {
+  margin: 0;
+  color: var(--accent);
+  font-size: 18px;
+  font-weight: 600;
+  font-family: "Monaspace Krypton", system-ui, Helvetica, Arial, sans-serif;
+  border-bottom: 1px solid var(--text-alpha);
+  padding-bottom: 8px;
+}
+
+/* Shortcuts */
+.settings-shortcuts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+  align-items: center;
+}
+
+.settings-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 20px;
   background: var(--bg-alpha);
-  backdrop-filter: blur(10px);
-  z-index: 1300;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  border-radius: 16px;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
 
-  &.visible {
-    opacity: 1;
+  &:hover {
+    background: var(--accent-alpha);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px var(--accent-alpha);
+  }
+}
+
+.settings-key {
+  background: var(--primary);
+  border: none;
+  border-radius: 12px;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-family: "Monaspace Krypton", ui-monospace, monospace;
+  color: var(--bg);
+  font-weight: 600;
+  min-width: 32px;
+  text-align: center;
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--primary) 30%, transparent);
+}
+
+.settings-desc {
+  color: var(--text);
+  font-size: 16px;
+  font-weight: 500;
+  font-family: "Monaspace Krypton", system-ui, Helvetica, Arial, sans-serif;
+}
+
+/* Theme selector */
+.settings-theme-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+}
+
+.settings-theme-card {
+  background: var(--bg-alpha);
+  border: 2px solid transparent;
+  border-radius: 16px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+
+  &:hover {
+    background: var(--accent-alpha);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px var(--accent-alpha);
   }
 
-  /* Help dialog */
-  .help-dialog {
-    background: var(--bg-light);
-    border-radius: var(--radius);
-    padding: 32px;
-    max-width: 600px;
-    width: 90vw;
-    box-shadow: var(--shadow-strong);
-    backdrop-filter: blur(10px);
-    transform: scale(0.9);
-    transition: transform 0.3s ease;
-    border: 1px solid var(--text-alpha);
+  &.selected {
+    border-color: var(--accent);
+    background: var(--accent-alpha);
+  }
+}
 
-    &.visible {
-      transform: scale(1);
-    }
+.settings-theme-name {
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+  font-family: "Monaspace Krypton", system-ui, Helvetica, Arial, sans-serif;
+}
+
+.settings-theme-desc {
+  font-size: 12px;
+  color: var(--comment);
+  margin-bottom: 12px;
+  font-family: "Monaspace Krypton", system-ui, Helvetica, Arial, sans-serif;
+}
+
+.settings-theme-preview {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+}
+
+.settings-theme-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid var(--text-alpha);
+}
+
+/* Settings footer */
+.settings-footer {
+  text-align: center;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--text-alpha);
+  color: var(--comment);
+  font-size: 14px;
+  font-weight: 500;
+  font-family: "Monaspace Krypton", system-ui, Helvetica, Arial, sans-serif;
+
+  .heart {
+    display: inline-block;
+    background: linear-gradient(
+      45deg,
+      #ff4488,
+      #4488ff,
+      #ffdd44,
+      #44ffdd,
+      #ff4488
+    );
+    background-size: 300% 300%;
+    animation: gradientShift 2s ease-in-out infinite;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    font-size: 18px;
+    font-weight: bold;
   }
 
-  /* Help header */
-  .help-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 24px;
-  }
-
-  .help-title {
-    margin: 0;
-    color: var(--brand);
-    font-size: 24px;
-    font-weight: 700;
-    font-family: "Monaspace Krypton", system-ui, Helvetica, Arial, sans-serif;
-  }
-
-  .help-close {
-    background: var(--text-alpha);
-    border: none;
-    color: var(--comment);
-    cursor: pointer;
-    padding: 8px;
-    border-radius: 50%;
-    font-size: 20px;
-    width: 36px;
-    height: 36px;
-    display: grid;
-    place-items: center;
-    transition: all 0.2s ease;
+  a {
+    color: var(--secondary);
+    text-decoration: none;
+    transition: color 0.2s ease;
 
     &:hover {
-      background: var(--accent-alpha);
-      color: var(--accent);
-      transform: scale(1.1);
-    }
-  }
-
-  /* Help shortcuts */
-  .help-shortcuts {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 12px;
-    align-items: center;
-  }
-
-  .help-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    padding: 16px 20px;
-    background: var(--bg-alpha);
-    border-radius: 16px;
-    transition:
-      background 0.2s ease,
-      transform 0.2s ease,
-      box-shadow 0.2s ease;
-    width: 100%;
-    box-sizing: border-box;
-
-    &:hover {
-      background: var(--accent-alpha);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 20px var(--accent-alpha);
-    }
-  }
-
-  .help-key {
-    background: var(--primary);
-    border: none;
-    border-radius: 12px;
-    padding: 8px 12px;
-    font-size: 14px;
-    font-family: "Monaspace Krypton", ui-monospace, monospace;
-    color: var(--bg);
-    font-weight: 600;
-    min-width: 32px;
-    text-align: center;
-    box-shadow: 0 2px 8px color-mix(in srgb, var(--primary) 30%, transparent);
-  }
-
-  .help-desc {
-    color: var(--text);
-    font-size: 16px;
-    font-weight: 500;
-    font-family: "Monaspace Krypton", system-ui, Helvetica, Arial, sans-serif;
-  }
-
-  /* Help footer */
-  .help-footer {
-    text-align: center;
-    margin-top: 24px;
-    padding-top: 20px;
-    border-top: 1px solid var(--text-alpha);
-    color: var(--comment);
-    font-size: 14px;
-    font-weight: 500;
-    font-family: "Monaspace Krypton", system-ui, Helvetica, Arial, sans-serif;
-
-    .heart {
-      display: inline-block;
-      background: linear-gradient(
-        45deg,
-        #ff4488,
-        #4488ff,
-        #ffdd44,
-        #44ffdd,
-        #ff4488
-      );
-      background-size: 300% 300%;
-      animation: gradientShift 2s ease-in-out infinite;
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-    a {
-      color: var(--secondary);
-      text-decoration: none;
-      transition: color 0.2s ease;
-
-      &:hover {
-        color: var(--brand);
-      }
+      color: var(--brand);
     }
   }
 }
 
-/* Help icon (separate from dialog system) */
-.help-icon {
-  opacity: 0.3;
+/* Settings icon (separate from dialog system) */
+.settings-icon {
+  opacity: 0.6;
   position: fixed;
   bottom: 24px;
   right: 24px;
@@ -382,10 +444,8 @@ button {
     z-index: -1;
     width: 20px;
     height: 20px;
-    background: currentColor;
     position: absolute;
     filter: blur(12px);
-    box-shadow: 0 0 12px currentColor;
   }
 
   &:hover {

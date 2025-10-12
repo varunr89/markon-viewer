@@ -1,5 +1,5 @@
 import { createButtons } from './actions.js'
-import { createHelpDialog, createHelpIcon } from './help.js'
+import { createSettingsDialog, createSettingsIcon } from './settings.js'
 import { observeTheme } from './syntax.js'
 import { setupHotkeys } from './hotkeys.js'
 import { createPreviewManager, createResizeHandler } from './resize.js'
@@ -7,25 +7,25 @@ import createToolbar from './toolbar.js'
 import { applyTheme, createPointerHandler, createToast, getPrefTheme } from './utils.js'
 
 // Initialize UI components
-export const initUI = ({ getMarkdown, setMarkdown }) => {
+export const initUI = async ({ getMarkdown, setMarkdown }) => {
 	// Setup toast
 	const toast = document.getElementById('toast')
 	const showToast = createToast(toast)
 
 	// Setup theme
-	const theme = getPrefTheme()
-	applyTheme(theme)
+	const { theme, mode } = getPrefTheme()
+	await applyTheme(theme, mode)
 
 	// Setup buttons
 	createButtons(showToast)
 
-	// Setup help system
-	const helpDialog = createHelpDialog()
-	const helpIcon = createHelpIcon(helpDialog)
-	document.body.appendChild(helpIcon)
+	// Setup settings system
+	const settingsDialog = createSettingsDialog()
+	const settingsIcon = createSettingsIcon(settingsDialog)
+	document.body.appendChild(settingsIcon)
 
 	// Setup hotkeys
-	setupHotkeys(helpDialog)
+	setupHotkeys(settingsDialog)
 
 	// Setup theme observer
 	observeTheme()

@@ -32,12 +32,10 @@
 - **Theme**
 - **Spellcheck**
 
-## TODO
+## Changelog
 
-- mobile support notice dialog
-- scroll sync
-- syntax highlighting themes
-- spec coverage
+- added split resize snap threshold
+- added theme presets in settings dialog
 
 ## Roadmap
 
@@ -48,7 +46,8 @@
 - **Scroll**: toggle scroll follow
 - **Share**: url hash content
 - **Shortcuts**: command palette
-- **Theming**: custom CSS hook
+- **Theming**: custom CSS look `wip`
+- scroll sync
 
 > [!NOTE]
 > _in no particular order_
@@ -58,4 +57,3 @@
 ## License
 
 [AGPL-3.0](LICENSE)
-

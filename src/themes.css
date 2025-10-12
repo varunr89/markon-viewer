@@ -1,0 +1,282 @@
+/* ===== THEME DEFINITIONS ===== */
+
+/* Panda Theme (Current Vibrant) */
+html[data-theme="panda"][data-mode="dark"] {
+	--bg: #261636;
+	--bg-light: #332244;
+	--text: #eeeedd;
+	--brand: #ff4488;
+	--accent: #8866ff;
+	--primary: #ccaa22;
+	--secondary: #22aa88;
+	--comment: #bbbbbb;
+	--meta: #ff4488;
+	--operator: #bb88ee;
+	--keyword: #ff88bb;
+	--regex: #ff99cc;
+	--property: #4488ff;
+	--string: #22aa88;
+	--literal: #ffbb66;
+	--hint: #8866dd;
+
+	/* semantic colors derived from core palette */
+	--success: #22bb11;
+	--warning: #ffaa00;
+	--info: #1199cc;
+	--error: #ff4488;
+}
+
+html[data-theme="panda"][data-mode="light"] {
+	--bg: #eeeedd;
+	--bg-light: #ffffff;
+	--text: #223344;
+	--brand: #cc6600;
+	--accent: #3366cc;
+	--primary: #cc6600;
+	--secondary: #006688;
+	--comment: #667799;
+	--meta: #cc6600;
+	--operator: #cc6600;
+	--keyword: #cc2299;
+	--regex: #cc5599;
+	--property: #3366cc;
+	--string: #006688;
+	--literal: #6644bb;
+	--hint: #eeaaff;
+
+	/* semantic colors for light theme */
+	--success: #22bb11;
+	--warning: #ffaa00;
+	--info: #1199cc;
+	--error: #cc6600;
+}
+
+/* Muted Theme (Softer, Lower Saturation) */
+html[data-theme="muted"][data-mode="dark"] {
+	--bg: #1a1a1a;
+	--bg-light: #2a2a2a;
+	--text: #d0d0d0;
+	--brand: #b3667a;
+	--accent: #7a7ab3;
+	--primary: #a3a366;
+	--secondary: #66a3a3;
+	--comment: #888888;
+	--meta: #b3667a;
+	--operator: #a3a3a3;
+	--keyword: #b37a7a;
+	--regex: #b37a9a;
+	--property: #7a9ab3;
+	--string: #7ab37a;
+	--literal: #b3a366;
+	--hint: #9a7ab3;
+
+	/* semantic colors */
+	--success: #66a366;
+	--warning: #b3a366;
+	--info: #669ab3;
+	--error: #b3667a;
+}
+
+html[data-theme="muted"][data-mode="light"] {
+	--bg: #f5f5f5;
+	--bg-light: #ffffff;
+	--text: #333333;
+	--brand: #8c4a5a;
+	--accent: #5a5a8c;
+	--primary: #8c7a4a;
+	--secondary: #5a8c5a;
+	--comment: #666666;
+	--meta: #8c4a5a;
+	--operator: #8c4a4a;
+	--keyword: #8c4a6a;
+	--regex: #8c4a7a;
+	--property: #5a7a8c;
+	--string: #5a8c5a;
+	--literal: #8c7a4a;
+	--hint: #7a4a8c;
+
+	/* semantic colors */
+	--success: #5a8c5a;
+	--warning: #8c7a4a;
+	--info: #5a7a8c;
+	--error: #8c4a5a;
+}
+
+/* Nord Theme (Cool Blue/Cyan Palette) */
+html[data-theme="nord"][data-mode="dark"] {
+	--bg: #2e3440;
+	--bg-light: #3b4252;
+	--text: #d8dee9;
+	--brand: #88c0d0;
+	--accent: #5e81ac;
+	--primary: #ebcb8b;
+	--secondary: #a3be8c;
+	--comment: #616e88;
+	--meta: #88c0d0;
+	--operator: #d08770;
+	--keyword: #b48ead;
+	--regex: #bf616a;
+	--property: #81a1c1;
+	--string: #a3be8c;
+	--literal: #ebcb8b;
+	--hint: #88c0d0;
+
+	/* semantic colors */
+	--success: #a3be8c;
+	--warning: #ebcb8b;
+	--info: #88c0d0;
+	--error: #bf616a;
+}
+
+html[data-theme="nord"][data-mode="light"] {
+	--bg: #eceff4;
+	--bg-light: #ffffff;
+	--text: #2e3440;
+	--brand: #5e81ac;
+	--accent: #88c0d0;
+	--primary: #d08770;
+	--secondary: #a3be8c;
+	--comment: #4c566a;
+	--meta: #5e81ac;
+	--operator: #d08770;
+	--keyword: #b48ead;
+	--regex: #bf616a;
+	--property: #5e81ac;
+	--string: #a3be8c;
+	--literal: #d08770;
+	--hint: #88c0d0;
+
+	/* semantic colors */
+	--success: #a3be8c;
+	--warning: #d08770;
+	--info: #5e81ac;
+	--error: #bf616a;
+}
+
+/* Monokai Theme (Warm Orange/Yellow Palette) */
+html[data-theme="monokai"][data-mode="dark"] {
+	--bg: #272822;
+	--bg-light: #3e3d32;
+	--text: #f8f8f2;
+	--brand: #f92672;
+	--accent: #66d9ef;
+	--primary: #e6db74;
+	--secondary: #a6e22e;
+	--comment: #75715e;
+	--meta: #f92672;
+	--operator: #f92672;
+	--keyword: #f92672;
+	--regex: #fd971f;
+	--property: #66d9ef;
+	--string: #e6db74;
+	--literal: #ae81ff;
+	--hint: #a6e22e;
+
+	/* semantic colors */
+	--success: #a6e22e;
+	--warning: #e6db74;
+	--info: #66d9ef;
+	--error: #f92672;
+}
+
+html[data-theme="monokai"][data-mode="light"] {
+	--bg: #f8f8f2;
+	--bg-light: #ffffff;
+	--text: #272822;
+	--brand: #d73a49;
+	--accent: #005cc5;
+	--primary: #e36209;
+	--secondary: #28a745;
+	--comment: #6a737d;
+	--meta: #d73a49;
+	--operator: #d73a49;
+	--keyword: #d73a49;
+	--regex: #e36209;
+	--property: #005cc5;
+	--string: #032f62;
+	--literal: #6f42c1;
+	--hint: #28a745;
+
+	/* semantic colors */
+	--success: #28a745;
+	--warning: #e36209;
+	--info: #005cc5;
+	--error: #d73a49;
+}
+
+/* Dracula Theme (Purple/Pink Palette) */
+html[data-theme="dracula"][data-mode="dark"] {
+	--bg: #282a36;
+	--bg-light: #44475a;
+	--text: #f8f8f2;
+	--brand: #ff79c6;
+	--accent: #8be9fd;
+	--primary: #f1fa8c;
+	--secondary: #50fa7b;
+	--comment: #6272a4;
+	--meta: #ff79c6;
+	--operator: #ff79c6;
+	--keyword: #ff79c6;
+	--regex: #ffb86c;
+	--property: #8be9fd;
+	--string: #f1fa8c;
+	--literal: #bd93f9;
+	--hint: #50fa7b;
+
+	/* semantic colors */
+	--success: #50fa7b;
+	--warning: #ffb86c;
+	--info: #8be9fd;
+	--error: #ff5555;
+}
+
+html[data-theme="dracula"][data-mode="light"] {
+	--bg: #f8f8f2;
+	--bg-light: #ffffff;
+	--text: #282a36;
+	--brand: #bd93f9;
+	--accent: #8be9fd;
+	--primary: #ffb86c;
+	--secondary: #50fa7b;
+	--comment: #6272a4;
+	--meta: #bd93f9;
+	--operator: #bd93f9;
+	--keyword: #bd93f9;
+	--regex: #ffb86c;
+	--property: #8be9fd;
+	--string: #50fa7b;
+	--literal: #ff79c6;
+	--hint: #50fa7b;
+
+	/* semantic colors */
+	--success: #50fa7b;
+	--warning: #ffb86c;
+	--info: #8be9fd;
+	--error: #ff5555;
+}
+
+/* Default theme fallback (Panda dark) */
+html:not([data-theme]) {
+	--bg: #261636;
+	--bg-light: #332244;
+	--text: #eeeedd;
+	--brand: #ff4488;
+	--accent: #8866ff;
+	--primary: #ccaa22;
+	--secondary: #22aa88;
+	--comment: #bbbbbb;
+	--meta: #ff4488;
+	--operator: #bb88ee;
+	--keyword: #ff88bb;
+	--regex: #ff99cc;
+	--property: #4488ff;
+	--string: #22aa88;
+	--literal: #ffbb66;
+	--hint: #8866dd;
+
+	/* semantic colors */
+	--success: #22bb11;
+	--warning: #ffaa00;
+	--info: #1199cc;
+	--error: #ff4488;
+}

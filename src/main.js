@@ -8,13 +8,14 @@ import '@fontsource/monaspace-krypton/700.css'
 import 'iconify-icon'
 import './style.css'
 import './components.css'
+import './themes.css'
 import { createEditor } from './core.js'
 import { setupPreview } from './preview.js'
 import { initUI } from './ui.js'
 
 const boot = async () => {
 	const { getMarkdown, setMarkdown, onMarkdownUpdated } = await createEditor()
-	const { previewHtml } = initUI({ getMarkdown, setMarkdown })
+	const { previewHtml } = await initUI({ getMarkdown, setMarkdown })
 	setupPreview({ getMarkdown, onMarkdownUpdated, previewHtml })
 }
 

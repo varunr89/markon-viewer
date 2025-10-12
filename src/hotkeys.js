@@ -1,8 +1,8 @@
-import { HOTKEYS } from './help.js'
+import { HOTKEYS } from './settings.js'
 import { $ } from './utils.js'
 
 // Key event handler
-export const createKeyHandler = helpDialog => e => {
+export const createKeyHandler = settingsDialog => e => {
 	if (e.target.matches('input, textarea, [contenteditable]') || e.altKey || e.shiftKey || e.ctrlKey || e.metaKey) return
 
 	const key = e.key.toLowerCase()
@@ -12,12 +12,8 @@ export const createKeyHandler = helpDialog => e => {
 		case '?':
 			if (e.shiftKey) {
 				e.preventDefault()
-				helpDialog.show()
+				settingsDialog.show()
 			}
-			return
-		case 'Escape':
-			e.preventDefault()
-			helpDialog.hide()
 			return
 	}
 
@@ -38,6 +34,6 @@ export const createKeyHandler = helpDialog => e => {
 }
 
 // Setup hotkeys
-export const setupHotkeys = helpDialog => {
-	document.addEventListener('keydown', createKeyHandler(helpDialog))
+export const setupHotkeys = settingsDialog => {
+	document.addEventListener('keydown', createKeyHandler(settingsDialog))
 }

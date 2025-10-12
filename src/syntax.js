@@ -16,7 +16,7 @@ const ensureHlLink = () => {
 	return link
 }
 
-const setHlTheme = mode => {
+export const setHlTheme = mode => {
 	const link = ensureHlLink()
 	const href = mode === 'light' ? lightHlCssUrl : darkHlCssUrl
 	if (link.getAttribute('href') !== href) link.setAttribute('href', href)
@@ -24,9 +24,7 @@ const setHlTheme = mode => {
 
 export const observeTheme = () => {
 	const html = document.documentElement
-	const apply = () => setHlTheme(html.classList.contains('light') ? 'light' : 'dark')
-	apply()
-	new MutationObserver(apply).observe(html, { attributes: true, attributeFilter: ['class'] })
+	setHlTheme(html.getAttribute('data-mode') || 'dark')
 }
 
 const selectBlocks = root => Array.from(root.querySelectorAll('pre code'))

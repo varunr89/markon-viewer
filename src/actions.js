@@ -104,10 +104,11 @@ const BUTTON_CONFIGS = [
 		'toggle-theme',
 		'Toggle theme',
 		'solar:sun-bold-duotone',
-		(_btn, showToast) => {
-			const current = document.documentElement.classList.contains('light') ? 'light' : 'dark'
+		async (_btn, showToast) => {
+			const current = document.documentElement.getAttribute('data-mode') || 'dark'
 			const next = current === 'light' ? 'dark' : 'light'
-			applyTheme(next)
+			const theme = document.documentElement.getAttribute('data-theme') || 'panda'
+			await applyTheme(theme, next)
 			showToast(`theme: ${next}`)
 		},
 		true,
