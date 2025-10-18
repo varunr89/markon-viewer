@@ -9,12 +9,13 @@
   <h3>
     <a href="https://metaory.github.io/markon">metaory.github.io/markon</a>
   </h3>
-  <img valign="middle" src="public/screenshots.png" alt="screenshot" width="96%" />
-  <h5>
+  <img valign="middle" src="public/screenshots.png" alt="screenshot" width="80%" />
+  <br> <br>
+  <img valign="middle" src="public/themes.png" alt="screenshot" width="70%" />
+  <br>
+  <a href="https://metaory.github.io/markon/themes">themes</a>
 </div>
 
-> [!WARNING]
-> Public Preview
 
 ## Features
 
@@ -34,20 +35,22 @@
 
 ## Changelog
 
-- added split resize snap threshold
-- added theme presets in settings dialog
+- autosave local persistence
+- split resize snap threshold
+- theme presets in settings dialog
 
 ## Roadmap
 
-- **Autosave**: local persistence
+- ~~**Autosave**: local persistence~~
 - **Export**: PDF/HTML
 - **Mobile**: touch gestures
 - **PWA**: installable, offline cache
 - **Scroll**: toggle scroll follow
 - **Share**: url hash content
-- **Shortcuts**: command palette
-- **Theming**: custom CSS look `wip`
-- scroll sync
+- ~~**Snap**: split resize snapping~~
+- ~~**Shortcuts**: command palette~~
+- ~~**Theming**: custom CSS look~~
+- **Scroll**: sync
 
 > [!NOTE]
 > _in no particular order_

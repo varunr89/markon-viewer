@@ -1,18 +1,11 @@
 <div align="center">
-  <h1>
-    <img valign="middle" src="https://github.com/metaory/markon/blob/master/public/wordmark.png?raw=true" alt="logo" height="64" />
-  </h1>
-  <strong>
-    Minimal distraction free local markdown live editor
-  </strong>
-  <br>
-  <h3>
-    <a href="https://metaory.github.io/markon">metaory.github.io/markon</a>
-  </h3>
-  <img valign="middle" src="https://github.com/metaory/markon/blob/master/public/screenshots.png?raw=true" alt="screenshot" width="96%" />
-  <br>
-  Public Preview
+  <br><img src="https://github.com/metaory/markon/blob/master/public/wordmark.png?raw=true" alt="logo" height="64" />
+
+  Minimal distraction free local markdown live editor
+
+  [metaory.github.io/markon](https://metaory.github.io/markon)
 </div>
+
 
 ---
 
@@ -21,6 +14,12 @@
 - **LocalStorage**: Automatic content persistence across sessions
 - **Theme Presets**: Enhanced theme selection with multiple presets in settings
 - **Resize Snap**: Smart split view resizing with snap threshold for better UX
+
+<div align="center">
+  <img width="70%" src="https://github.com/metaory/markon/blob/master/public/screenshots.png?raw=true" alt="screenshot" />
+  <br>
+  <img width="70%" src="https://github.com/metaory/markon/blob/master/public/themes.png?raw=true" alt="themes" />
+</div>
 
 ---
 

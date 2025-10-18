@@ -12,7 +12,7 @@ const setPreviewWidth = (width, wrap) => {
 }
 
 export const createPreviewManager = (wrap) => {
-	let _width = 250
+	let _width = 300
 	const previewToggle = document.getElementById('preview-toggle')
 
 	const setWidth = newWidth => {

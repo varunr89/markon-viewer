@@ -195,13 +195,9 @@ const getThemeColors = themeName => {
 
 
 export const getPrefTheme = () => {
-	const theme = localStorage.getItem('theme-name') || 'panda'
-	const mode = localStorage.getItem('theme-mode') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark')
-
-	if (!theme || theme === 'undefined') {
-		localStorage.setItem('theme-name', 'panda')
-		return { theme: 'panda', mode }
-	}
+	const params = new URLSearchParams(window.location.search)
+	const theme = params.get('theme') || localStorage.getItem('theme-name') || 'panda'
+	const mode = params.get('mode') || localStorage.getItem('theme-mode') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark')
 
 	return { theme, mode }
 }
