@@ -68,6 +68,7 @@
   gap: 8px;
   justify-content: end;
   min-width: 0;
+  overflow: visible;
 }
 
 /* Bar pull indicator */
@@ -103,6 +104,7 @@ button {
   min-width: 0;
   transition: all 0.2s ease;
   position: relative;
+  overflow: visible;
 
   &::before {
     content: "";
@@ -116,12 +118,36 @@ button {
   }
 
   span {
-    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-8px);
+    display: grid;
+    place-items: center;
+    opacity: 0;
+    transition: all 0.2s ease;
+    font-weight: 600;
+    font-size: 0.75rem;
+    text-shadow: 0 0 8px currentColor;
+    color: inherit;
+    z-index: 10;
+    padding: 4px 8px;
+    white-space: nowrap;
+    background: var(--bg);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px var(--shadow-strong);
+    margin-top: 4px;
+    pointer-events: none;
   }
 
   &:hover {
     transform: scale(1.2);
     opacity: 1;
+
+    span {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
   }
 
   &:active {
@@ -131,6 +157,7 @@ button {
   iconify-icon {
     opacity: 0.9;
     mix-blend-mode: lighten;
+    transition: opacity 0.2s ease;
   }
 
   &.toggle {
@@ -175,6 +202,13 @@ button {
   }
   &#github:hover {
     color: var(--info) !important;
+  }
+}
+
+/* Mobile: Keep icon-only display on touch devices */
+@media (hover: none) {
+  button span {
+    display: none;
   }
 }
 

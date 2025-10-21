@@ -28,7 +28,8 @@ const createButton = (config, showToast) => {
 	return btn
 }
 
-const iconStyle = 'bold'
+// Tabler icons don't use style suffixes like Solar
+// const iconStyle = 'bold'
 // const iconStyle = 'outline'
 // const iconStyle = 'broken'
 // const iconStyle = 'linear'
@@ -38,7 +39,7 @@ const BUTTON_CONFIGS = [
 	[
 		'copy-to-clipboard',
 		'Copy to clipboard',
-		`solar:copy-${iconStyle}`,
+		`tabler:copy`,
 		async (_btn, showToast) => {
 			const text = await window.getMarkdown?.()
 			if (text) await copySmart(text, showToast)
@@ -47,14 +48,14 @@ const BUTTON_CONFIGS = [
 	[
 		'load-from-clipboard',
 		'Load from clipboard',
-		`solar:clipboard-text-${iconStyle}`,
+		`tabler:clipboard-text`,
 		async (_btn, showToast) => {
 			const text = await window.readClipboardSmart?.()
 			if (text) {
 				const lines = text.split('\n')
 				const minLines = 5
 				const paddingLines = lines.length < minLines ? 3 : 0
-				const paddedText = paddingLines > 0 
+				const paddedText = paddingLines > 0
 					? '\n'.repeat(paddingLines) + text
 					: text
 				window.setMarkdown?.(paddedText)
@@ -63,34 +64,9 @@ const BUTTON_CONFIGS = [
 		},
 	],
 	[
-		'save-to-file',
-		'Save to file',
-		`solar:download-${iconStyle}`,
-		async (_btn, showToast) => {
-			const text = await window.getMarkdown?.()
-			if (text) {
-				const name = prompt('filename:', 'document.md') || 'document.md'
-				downloadText(name, text)
-				showToast('saved to file')
-			}
-		},
-	],
-	[
-		'load-from-file',
-		'Load from file',
-		`solar:upload-${iconStyle}`,
-		async (_btn, showToast) => {
-			const text = await openFileText()
-			if (text) {
-				window.setMarkdown?.(text)
-				showToast('loaded from file')
-			}
-		},
-	],
-	[
 		'toggle-spell',
 		'Toggle spell check',
-		'solar:spell-check-bold-duotone',
+		'tabler:spell-check',
 		(btn, showToast) => {
 			const pressed = btn.getAttribute('aria-pressed') === 'true'
 			btn.setAttribute('aria-pressed', !pressed)
@@ -103,7 +79,7 @@ const BUTTON_CONFIGS = [
 	[
 		'toggle-theme',
 		'Toggle theme',
-		'solar:sun-bold-duotone',
+		'tabler:sun',
 		async (_btn, showToast) => {
 			const current = document.documentElement.getAttribute('data-mode') || 'dark'
 			const next = current === 'light' ? 'dark' : 'light'
@@ -115,9 +91,51 @@ const BUTTON_CONFIGS = [
 		false,
 	],
 	[
+		'save-to-file',
+		'Save to file',
+		`tabler:download`,
+		async (_btn, showToast) => {
+			const text = await window.getMarkdown?.()
+			if (text) {
+				const name = prompt('filename:', 'document.md') || 'document.md'
+				downloadText(name, text)
+				showToast('saved to file')
+			}
+		},
+	],
+	[
+		'load-from-file',
+		'Load from file',
+		`tabler:upload`,
+		async (_btn, showToast) => {
+			const text = await openFileText()
+			if (text) {
+				window.setMarkdown?.(text)
+				showToast('loaded from file')
+			}
+		},
+	],
+	[
+		'install-pwa',
+		'Install App',
+		'tabler:download',
+		async (btn, showToast) => {
+			if ('serviceWorker' in navigator && 'BeforeInstallPromptEvent' in window) {
+				// Show native install prompt
+				window.deferredPrompt.prompt()
+				const { outcome } = await window.deferredPrompt.userChoice
+				showToast(outcome === 'accepted' ? 'App installed!' : 'Install cancelled')
+				window.deferredPrompt = null
+				btn.style.display = 'none'
+			} else {
+				showToast('Install not available on this device')
+			}
+		},
+	],
+	[
 		'github',
 		'GitHub',
-		'solar:iconify-icon-bold-duotone',
+		'tabler:brand-github',
 		(_btn, _showToast) => {
 			window.open('https://github.com/metaory/markon', '_blank')
 		},

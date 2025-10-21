@@ -203,7 +203,7 @@ export const getPrefTheme = () => {
 }
 
 const updateThemeColor = () => {
-	const brandColor = getComputedStyle(document.documentElement).getPropertyValue('--brand').trim()
+	const brandColor = getComputedStyle(document.documentElement).getPropertyValue('--bg-light').trim()
 	const meta = document.querySelector('meta[name="theme-color"]')
 	if (meta && brandColor) meta.setAttribute('content', brandColor)
 }

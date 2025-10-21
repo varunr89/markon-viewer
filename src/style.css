@@ -50,6 +50,44 @@ body {
 	background-clip: content-box;
 }
 
+/* Profiler overlay */
+.profiler-overlay {
+	position: fixed;
+	bottom: 20px;
+	left: 20px;
+	background: rgba(59, 130, 246, 0.15);
+	backdrop-filter: blur(12px);
+	border-radius: 16px;
+	padding: 8px 12px;
+	font-family: "Monaspace Krypton", monospace;
+	font-size: 12px;
+	font-weight: 600;
+	color: white;
+	mix-blend-mode: screen;
+	min-width: 20px;
+	text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+	z-index: 1000;
+	user-select: none;
+	pointer-events: none;
+	transition: all 0.3s ease;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.profiler-overlay.good {
+	background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(147, 51, 234, 0.2));
+	border-color: rgba(59, 130, 246, 0.3);
+}
+
+.profiler-overlay.ok {
+	background: linear-gradient(135deg, rgba(147, 51, 234, 0.2), rgba(236, 72, 153, 0.2));
+	border-color: rgba(147, 51, 234, 0.3);
+}
+
+.profiler-overlay.bad {
+	background: linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(239, 68, 68, 0.2));
+	border-color: rgba(236, 72, 153, 0.3);
+}
+
 *::-webkit-scrollbar-track {
 	background: transparent;
 }

@@ -5,7 +5,7 @@ import { enhanceCallouts } from './callouts.js'
 marked.setOptions({ gfm: true, breaks: true })
 
 
-export const setupPreview = ({ getMarkdown, onMarkdownUpdated, previewHtml }) => {
+export const setupPreview = ({ getMarkdown, onMarkdownUpdated, previewHtml, profiler }) => {
 	let renderScheduled = false
 
 	const render = async () => {
@@ -13,6 +13,13 @@ export const setupPreview = ({ getMarkdown, onMarkdownUpdated, previewHtml }) =>
 		previewHtml.innerHTML = marked.parse(md)
 		enhanceCallouts(previewHtml)
 		await highlightAll(previewHtml)
+
+		// Wait for actual paint to complete - this captures the real rendering time
+		requestAnimationFrame(() => {
+			requestAnimationFrame(() => {
+				profiler?.markRenderComplete()
+			})
+		})
 	}
 
 	const scheduleRender = () => {

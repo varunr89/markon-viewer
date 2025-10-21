@@ -24,16 +24,16 @@ export const createSettingsDialog = () => {
 	const header = createElement('div', { className: 'settings-header' })
 	const title = createElement('h2', { className: 'settings-title', textContent: 'Settings' })
 	const closeBtn = createElement('button', { className: 'settings-close' })
-	closeBtn.innerHTML = '<iconify-icon width="38" height="38" icon="solar:close-circle-bold"></iconify-icon>'
+	closeBtn.innerHTML = '<iconify-icon width="38" height="38" icon="tabler:x"></iconify-icon>'
 	header.append(title, closeBtn)
 
 	const content = createElement('div', { className: 'settings-content' })
 
 	const themesSection = createThemesSection()
-
+	const performanceSection = createPerformanceSection()
 	const shortcutsSection = createShortcutsSection()
 
-	content.append(themesSection, shortcutsSection)
+	content.append(themesSection, performanceSection, shortcutsSection)
 
 	const footer = createElement('div', { className: 'settings-footer' })
 	const heart = createElement('span', { className: 'heart', textContent: '❤️' })
@@ -61,7 +61,7 @@ export const createSettingsDialog = () => {
 
 	// Footer - line 2: Issues link
 	const issuesIcon = createElement('iconify-icon', {
-		icon: 'tabler:brand-github-filled',
+		icon: 'tabler:brand-github',
 		width: '16',
 		style: 'vertical-align: middle; margin-right: 4px;'
 	})
@@ -100,6 +100,139 @@ export const createSettingsDialog = () => {
 	})
 
 	return { show, hide }
+}
+
+// Create configuration section
+const createPerformanceSection = () => {
+	const section = createElement('div', { className: 'settings-section' })
+	const sectionTitle = createElement('h3', { className: 'settings-section-title', textContent: 'Configuration' })
+
+	// Create two-column grid
+	const configGrid = createElement('div', {
+		className: 'settings-shortcuts',
+		style: 'grid-template-columns: repeat(2, 1fr);'
+	})
+
+	// Profiler toggle
+	const profilerToggle = createElement('div', { className: 'settings-item' })
+	const profilerLabel = createElement('span', {
+		textContent: 'Profiler',
+		style: 'font-weight: 500;'
+	})
+	const profilerBtn = createElement('button', {
+		className: 'settings-theme-control-btn',
+		id: 'toggle-profiler',
+		'aria-pressed': localStorage.getItem('markon-profiler-visible') === 'true',
+		style: 'background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(147, 51, 234, 0.2)); border: none;'
+	})
+
+	const profilerIcon = createElement('iconify-icon', {
+		icon: 'tabler:chart-line',
+		width: '16',
+		height: '16'
+	})
+	const profilerText = createElement('span', { textContent: 'Toggle' })
+	profilerBtn.append(profilerIcon, profilerText)
+
+	profilerToggle.append(profilerLabel, profilerBtn)
+
+	// Add click handler for profiler
+	createClickHandler(profilerBtn, () => {
+		const profiler = window.__MARKON_PERF__
+		if (profiler) {
+			profiler.toggle()
+			const isVisible = profiler.isVisible
+			profilerBtn.setAttribute('aria-pressed', String(isVisible))
+		}
+	})
+
+	// Spell check toggle
+	const spellToggle = createElement('div', { className: 'settings-item' })
+	const spellLabel = createElement('span', {
+		textContent: 'Spell Check',
+		style: 'font-weight: 500;'
+	})
+	const spellBtn = createElement('button', {
+		className: 'settings-theme-control-btn',
+		id: 'toggle-spell',
+		'aria-pressed': 'false',
+		style: 'background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(16, 185, 129, 0.2)); border: none;'
+	})
+
+	const spellIcon = createElement('iconify-icon', {
+		icon: 'tabler:abc',
+		width: '16',
+		height: '16'
+	})
+	const spellText = createElement('span', { textContent: 'Toggle' })
+	spellBtn.append(spellIcon, spellText)
+
+	spellToggle.append(spellLabel, spellBtn)
+
+	// Add click handler for spell check
+	createClickHandler(spellBtn, () => {
+		const pressed = spellBtn.getAttribute('aria-pressed') === 'true'
+		spellBtn.setAttribute('aria-pressed', String(!pressed))
+		document.getElementById('toggle-spell')?.click()
+	})
+
+	// Save file button
+	const saveToggle = createElement('div', { className: 'settings-item' })
+	const saveLabel = createElement('span', {
+		textContent: 'Save File',
+		style: 'font-weight: 500;'
+	})
+	const saveBtn = createElement('button', {
+		className: 'settings-theme-control-btn',
+		id: 'save-to-file',
+		style: 'background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(251, 191, 36, 0.2)); border: none;'
+	})
+
+	const saveIcon = createElement('iconify-icon', {
+		icon: 'tabler:download',
+		width: '16',
+		height: '16'
+	})
+	const saveText = createElement('span', { textContent: 'Save' })
+	saveBtn.append(saveIcon, saveText)
+
+	saveToggle.append(saveLabel, saveBtn)
+
+	// Add click handler for save
+	createClickHandler(saveBtn, () => {
+		document.getElementById('save-to-file')?.click()
+	})
+
+	// Load file button
+	const loadToggle = createElement('div', { className: 'settings-item' })
+	const loadLabel = createElement('span', {
+		textContent: 'Load File',
+		style: 'font-weight: 500;'
+	})
+	const loadBtn = createElement('button', {
+		className: 'settings-theme-control-btn',
+		id: 'load-from-file',
+		style: 'background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(147, 51, 234, 0.2)); border: none;'
+	})
+
+	const loadIcon = createElement('iconify-icon', {
+		icon: 'tabler:upload',
+		width: '16',
+		height: '16'
+	})
+	const loadText = createElement('span', { textContent: 'Load' })
+	loadBtn.append(loadIcon, loadText)
+
+	loadToggle.append(loadLabel, loadBtn)
+
+	// Add click handler for load
+	createClickHandler(loadBtn, () => {
+		document.getElementById('load-from-file')?.click()
+	})
+
+	configGrid.append(profilerToggle, spellToggle, saveToggle, loadToggle)
+	section.append(sectionTitle, configGrid)
+	return section
 }
 
 // Create shortcuts section
@@ -169,7 +302,7 @@ const createThemesSection = () => {
 		title: 'Download themes.css'
 	})
 	const downloadIcon = createElement('iconify-icon', {
-		icon: 'gravity-ui:caret-down',
+		icon: 'tabler:download',
 		width: '16',
 		height: '16'
 	})
@@ -184,7 +317,7 @@ const createThemesSection = () => {
 		title: 'Upload themes.css'
 	})
 	const uploadIcon = createElement('iconify-icon', {
-		icon: 'gravity-ui:caret-up',
+		icon: 'tabler:upload',
 		width: '16',
 		height: '16'
 	})
@@ -246,7 +379,7 @@ const highlightCurrentTheme = (themeGrid) => {
 // Settings icon creation
 export const createSettingsIcon = settingsDialog => {
 	const icon = createElement('iconify-icon', {
-		icon: 'solar:settings-bold',
+		icon: 'tabler:settings',
 		className: 'settings-icon',
 		title: 'Settings (Ctrl+/)',
 		width: '36',

@@ -186,7 +186,7 @@
   min-width: 80px;
   background: transparent;
   border: none;
-  outline: 2px solid var(--accent);
+  outline: none;
   border-radius: 12px;
   color: var(--accent);
   font-size: 14px;
@@ -238,7 +238,7 @@
     display: inline-block;
     background: linear-gradient(
       45deg,
-      #ff4488,
+      #ff1100,
       #4488ff,
       #ffdd44,
       #44ffdd,

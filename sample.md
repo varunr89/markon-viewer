@@ -4,31 +4,72 @@
   Minimal distraction free local markdown live editor
 
   [metaory.github.io/markon](https://metaory.github.io/markon)
-</div>
 
-
----
-
-## Recent Updates
-
-- **LocalStorage**: Automatic content persistence across sessions
-- **Theme Presets**: Enhanced theme selection with multiple presets in settings
-- **Resize Snap**: Smart split view resizing with snap threshold for better UX
-
-<div align="center">
-  <img width="70%" src="https://github.com/metaory/markon/blob/master/public/screenshots.png?raw=true" alt="screenshot" />
-  <br>
-  <img width="70%" src="https://github.com/metaory/markon/blob/master/public/themes.png?raw=true" alt="themes" />
+  <img width="80%" src="https://github.com/metaory/markon/blob/master/public/screenshots.png?raw=true" alt="screenshot" />
 </div>
 
 ---
 
-### Basic Usage
+## Features
 
-1. **Type** your markdown in the left panel
-2. **Preview** renders live in the right panel
-3. **Resize** the split by dragging the divider
-4. **Save** your work with `Ctrl+S` (or `Cmd+S` on Mac)
+- **GFM**: GitHub Flavored Markdown + alerts
+- **Syntax**: 250+ languages with highlighting
+- **Split view**: resizable editor & preview
+- **Auto-save**: localStorage persistence
+- **Themes**: multiple presets
+- **Hotkeys**: keyboard shortcuts
+- **Offline**: no network required
+
+## Roadmap
+
+- [x] **Autosave**: local persistence
+- [ ] **Export**: PDF/HTML
+- [ ] **Mobile**: touch gestures
+- [x] **PWA**: installable, offline cache
+- [ ] **Scroll**: toggle scroll follow
+- [ ] **Share**: url hash content
+- [x] **Snap**: split resize snapping
+- [x] **Shortcuts**: command palette
+- [x] **Theming**: custom CSS look
+- [x] **Theme Presets**: multiple presets in settings
+- [ ] **Scroll**: sync
+
+> [!NOTE]
+> _in no particular order_
+
+---
+
+
+### C
+
+```c
+#include <stdio.h>
+
+int fibonacci(int n) {
+    if (n <= 1) return n;
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+int main() {
+    printf("Fibonacci(10) = %d\n", fibonacci(10));
+    return 0;
+}
+```
+
+### Rust
+
+```rust
+fn fibonacci(n: u32) -> u32 {
+    match n {
+        0 | 1 => n,
+        _ => fibonacci(n - 1) + fibonacci(n - 2),
+    }
+}
+
+fn main() {
+    println!("Fibonacci(10) = {}", fibonacci(10));
+}
+```
 
 ### Keyboard Shortcuts
 
@@ -45,6 +86,13 @@
 
 > [!TIP]
 > All content is automatically saved to localStorage - no data loss!
+
+### Basic Usage
+
+1. **Type** your markdown in the left panel
+2. **Preview** renders live in the right panel
+3. **Resize** the split by dragging the divider
+4. **Save** your work with `Ctrl+S` (or `Cmd+S` on Mac)
 
 ---
 
@@ -140,6 +188,18 @@ npm install
 npm run dev
 ```
 
+## Language Loading & Caching
+
+**markon** uses **lazy loading** for syntax highlighting to keep the app fast and lightweight:
+
+- **On-demand loading**: Language modules are only loaded when you use them
+- **Smart caching**: Once loaded, languages work offline in future sessions
+- **250+ languages**: Full highlight.js support with minimal initial bundle size
+- **PWA optimized**: Cached languages persist across app updates
+
+> [!TIP]
+> **Offline behavior**: Languages you've used before will work offline. New languages require an internet connection to load initially.
+
 ### Tables
 
 | Feature | Status | Notes |
@@ -210,6 +270,10 @@ The editor features intelligent split view resizing:
 - **Memory**: Remembers your preferred split ratio
 
 ### Theme System
+
+<div align="center">
+  <img width="80%" src="https://github.com/metaory/markon/blob/master/public/themes.png?raw=true" alt="themes" />
+</div>
 
 Multiple theme presets available:
 - Light themes for bright environments

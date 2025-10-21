@@ -6,6 +6,7 @@ import { EditorView, keymap } from '@codemirror/view'
 import sampleMd from '../sample.md?raw'
 import { editorThemeExtensions } from './style.js'
 import { createStorage } from './storage.js'
+import { createProfiler } from './profiler.js'
 
 const readDefaultMarkdown = async () => sampleMd || '# markon\n\nStart typing...'
 
@@ -13,6 +14,7 @@ export const createEditor = async () => {
 	let view = null
 	const subscribers = []
 	let storage = null
+	const profiler = createProfiler()
 
 	const mountIfNeeded = () => {
 		const html = document.documentElement
@@ -34,7 +36,10 @@ export const createEditor = async () => {
 				keymap.of([indentWithTab, ...defaultKeymap]),
 				EditorView.lineWrapping,
 				EditorView.updateListener.of(v => {
-					if (v.docChanged) notify()
+					if (v.docChanged) {
+						profiler.markInputStart()
+						notify()
+					}
 				}),
 				...editorThemeExtensions(),
 			],
@@ -64,8 +69,8 @@ export const createEditor = async () => {
 	}
 	const onMarkdownUpdated = fn => subscribers.push(fn)
 
-	// Expose storage cleanup
+	// Expose storage cleanup and profiler
 	const cleanup = () => storage?.cleanup()
 
-	return { getMarkdown, setMarkdown, onMarkdownUpdated, cleanup }
+	return { getMarkdown, setMarkdown, onMarkdownUpdated, cleanup, profiler }
 }
