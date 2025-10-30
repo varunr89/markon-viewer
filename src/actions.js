@@ -99,7 +99,7 @@ const ACTIONS_CONFIG = [
 	{
 		id: 'toggle-theme',
 		label: 'Theme',
-		icon: 'tabler:contrast',
+		icon: 'tabler:contrast-filled',
 		hotkey: 'ctrl+m',
 		gradient: 'linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(251, 191, 36, 0.2))',
 		showInToolbar: true,
