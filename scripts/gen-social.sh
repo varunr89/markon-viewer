@@ -1,7 +1,9 @@
 #!/bin/bash
 
-W=1280 H=640 BG="transparent" SCALE=60 X=50 Y=30 STACK=25 LOGO_SIZE=120 RADIUS=20 THEME=gruvbox
+W=1280 H=640 BG="transparent" SCALE=82 X=50 Y=30 STACK=25 LOGO_SIZE=200 RADIUS=24
+THEME="${1:-'tokyo-night'}"
 URL="http://localhost:5173?theme=${THEME}&mode"
+OUT="public/screenshots-${THEME}.png"
 
 cd "$(dirname "$0")/.."
 
@@ -31,14 +33,15 @@ for mode in light dark; do
     --headless --disable-gpu \
     --virtual-time-budget=2000 \
     --hide-scrollbars \
-    --window-size=1200,800 \
+    --window-size=1200,650 \
     --screenshot=$f \
     "$URL=$mode" 2>/dev/null
+  magick "$f" -trim +repage "$f"
   mkround "$f"
 done
 
 WIDTH=$((1200 * SCALE / 100))
-HEIGHT=$((800 * SCALE / 100))
+HEIGHT=$((650 * SCALE / 100))
 DARK_X=$((W - WIDTH - X))
 DARK_Y=$((Y + HEIGHT * STACK / 100))
 
@@ -47,20 +50,20 @@ magick -size ${W}x${H} xc:"${BG}" \
   \( screenshot-light.png -resize ${WIDTH}x${HEIGHT} \) -geometry +${X}+${Y} -composite \
   \( screenshot-dark.png -resize ${WIDTH}x${HEIGHT} \) -geometry +${DARK_X}+${DARK_Y} -composite \
   \( public/logo.png -resize ${LOGO_SIZE}x${LOGO_SIZE} \) -geometry +$((X + 120))+$((H - LOGO_SIZE - Y + 10)) -composite \
-  public/screenshots.png
+  "${OUT}"
 
 echo "🗜️ Optimizing final image..."
 
-magick public/screenshots.png \
+magick "${OUT}" \
   -strip \
   -define png:compression-level=9 \
   -define png:compression-strategy=2 \
-  public/screenshots.png
+  "${OUT}"
 
 command -v pngquant >/dev/null && {
   echo "🔧 Further optimizing with pngquant..."
-  pngquant --force --ext .png --quality=70-85 public/screenshots.png
+  pngquant --force --ext .png --quality=70-85 "${OUT}"
 }
 
 rm -f screenshot-*.png
-echo "✅ Generated: public/screenshots.png (${W}x${H})"
+echo "✅ Generated: ${OUT} (${W}x${H})"

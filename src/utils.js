@@ -218,7 +218,7 @@ const getThemeColors = themeName => {
 
 export const getPrefTheme = () => {
 	const params = new URLSearchParams(window.location.search)
-	const theme = params.get('theme') || localStorage.getItem('theme-name') || 'panda'
+	const theme = params.get('theme') || localStorage.getItem('theme-name') || 'tokyo-night'
 	const mode = params.get('mode') || localStorage.getItem('theme-mode') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark')
 
 	return { theme, mode }
@@ -231,7 +231,7 @@ const updateThemeColor = () => {
 }
 
 export const applyTheme = async (themeName, mode) => {
-	const validTheme = themeName && themeName !== 'undefined' ? themeName : 'panda'
+	const validTheme = themeName && themeName !== 'undefined' ? themeName : 'tokyo-night'
 	const validMode = mode && mode !== 'undefined' ? mode : 'dark'
 
 	const html = document.documentElement
