@@ -18,6 +18,7 @@
 
 ## Roadmap
 
+- [ ] **VIMODE**: codemirror-vim
 - [x] **Autosave**: local persistence
 - [ ] **Export**: PDF/HTML
 - [ ] **Mobile**: touch gestures
@@ -126,10 +127,15 @@ fn main() {
 ### Headings
 
 # H1 Heading
+
 ## H2 Heading
+
 ### H3 Heading
+
 #### H4 Heading
+
 ##### H5 Heading
+
 ###### H6 Heading
 
 ### Text Formatting

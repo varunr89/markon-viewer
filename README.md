@@ -42,6 +42,7 @@
 
 ## Roadmap
 
+- [ ] **VIMODE**: codemirror-vim
 - [x] **Autosave**: local persistence
 - [ ] **Export**: PDF/HTML
 - [ ] **Mobile**: touch gestures
