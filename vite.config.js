@@ -28,16 +28,23 @@ export default defineConfig({
 							cacheName: 'font-cache',
 							expiration: {
 								maxEntries: 10,
-								maxAgeSeconds: 60 * 60 * 24 * 365 // 1 year
-							}
-						}
-					}
-				]
+								maxAgeSeconds: 60 * 60 * 24 * 365, // 1 year
+							},
+						},
+					},
+				],
 			},
 			includeAssets: [
-				'logo.png', 'wordmark.png', 'drag-handle.svg', 
-				'wordmark-font.svg', 'wordmark.svg',
-				'icon-192.png', 'icon-512.png', 'icon-maskable-512.png', 'apple-touch-icon.png'
+				'logo.png',
+				'wordmark.png',
+				'wordmark-bw.png',
+				'drag-handle.svg',
+				'wordmark-font.svg',
+				'wordmark.svg',
+				'icon-192.png',
+				'icon-512.png',
+				'icon-maskable-512.png',
+				'apple-touch-icon.png',
 			],
 			manifest: {
 				name: 'markon',
@@ -54,25 +61,25 @@ export default defineConfig({
 						src: 'icon-192.png',
 						sizes: '192x192',
 						type: 'image/png',
-						purpose: 'any'
+						purpose: 'any',
 					},
 					{
 						src: 'icon-512.png',
 						sizes: '512x512',
 						type: 'image/png',
-						purpose: 'any'
+						purpose: 'any',
 					},
 					{
 						src: 'icon-maskable-512.png',
 						sizes: '512x512',
 						type: 'image/png',
-						purpose: 'maskable'
-					}
-				]
+						purpose: 'maskable',
+					},
+				],
 			},
 			devOptions: {
-				enabled: true
-			}
-		})
-	]
+				enabled: true,
+			},
+		}),
+	],
 })

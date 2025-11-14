@@ -59,15 +59,19 @@
   background: linear-gradient(45deg, var(--hint), var(--brand));
   background-clip: text;
   color: transparent;
+
+  img {
+    opacity: 0.5;
+  }
 }
 
-#brand img {
-  filter: saturate(0.6) brightness(10);
-}
-
-html[data-mode="light"] #brand img {
-  filter: none;
-}
+/* #brand img { */
+/*   filter: opacity(0.4) saturate(0.6) brightness(10); */
+/* } */
+/**/
+/* html[data-mode="light"] #brand img { */
+/*   filter: opacity(0.4); */
+/* } */
 
 /* Actions container */
 #actions {
