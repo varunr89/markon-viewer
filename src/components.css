@@ -12,6 +12,7 @@
   max-width: none;
   height: 100dvh;
   overflow: hidden;
+  will-change: grid-template-columns;
 }
 
 /* Editor container */
