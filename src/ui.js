@@ -8,7 +8,7 @@ import { createTOC } from './toc.js'
 import { applyTheme, createPointerHandler, createToast, getPrefTheme } from './utils.js'
 
 // Initialize UI components
-export const initUI = async ({ getMarkdown, setMarkdown }) => {
+export const initUI = async ({ getMarkdown, setMarkdown, scrollToLine }) => {
 	// Setup toast
 	const toast = document.getElementById('toast')
 	const showToast = createToast(toast)
@@ -47,7 +47,7 @@ export const initUI = async ({ getMarkdown, setMarkdown }) => {
 	const previewHtml = document.getElementById('previewhtml')
 	const previewContainer = document.getElementById('preview')
 	if (previewHtml && previewContainer) {
-		createTOC(previewHtml, previewContainer)
+		createTOC(previewHtml, previewContainer, { getMarkdown, scrollToLine })
 	}
 
 	// Expose markdown functions globally for button access

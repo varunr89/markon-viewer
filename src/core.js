@@ -77,6 +77,14 @@ export const createEditor = async () => {
 	}
 	const onMarkdownUpdated = fn => subscribers.push(fn)
 
+	const scrollToLine = lineNumber => {
+		if (!view || lineNumber < 1) return
+		const line = view.state.doc.line(Math.min(lineNumber, view.state.doc.lines))
+		view.dispatch({
+			effects: EditorView.scrollIntoView(line.from, { y: 'start', yMargin: 20 })
+		})
+	}
+
 	// Expose global functions for worker
 	window.getMarkdown = getMarkdown
 	window.setMarkdown = setMarkdown
@@ -84,5 +92,5 @@ export const createEditor = async () => {
 	// Expose storage cleanup and profiler
 	const cleanup = () => storage?.cleanup()
 
-	return { getMarkdown, setMarkdown, onMarkdownUpdated, cleanup, profiler }
+	return { getMarkdown, setMarkdown, onMarkdownUpdated, cleanup, profiler, scrollToLine }
 }

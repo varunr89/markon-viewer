@@ -36,8 +36,8 @@ const boot = async () => {
 	addTablerIcons()
 	document.addEventListener('DOMContentLoaded', addTablerIcons)
 
-	const { getMarkdown, setMarkdown, onMarkdownUpdated, cleanup, profiler } = await createEditor()
-	const { previewHtml } = await initUI({ getMarkdown, setMarkdown })
+	const { getMarkdown, setMarkdown, onMarkdownUpdated, cleanup, profiler, scrollToLine } = await createEditor()
+	const { previewHtml } = await initUI({ getMarkdown, setMarkdown, scrollToLine })
 	setupPreview({ getMarkdown, onMarkdownUpdated, previewHtml, profiler })
 
 	// Handle PWA install prompt - setup after UI is initialized

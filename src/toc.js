@@ -22,9 +22,22 @@ const extractHeaders = (previewHtml) =>
     }))
     .filter((h) => h.text);
 
-const scrollToHeader = (header) => {
+const findHeaderInMarkdown = (markdown, header) => {
+  const prefix = "#".repeat(header.level) + " ";
+  const escapedText = header.text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const pattern = new RegExp(`^${prefix}${escapedText}\\s*(?:\\{#.*\\})?$`, "m");
+  const match = markdown.match(pattern);
+  return match ? markdown.substring(0, match.index).split("\n").length : null;
+};
+
+const scrollToHeader = (header, getMarkdown, scrollToLine) => {
   if (!header?.element) return;
   header.element.scrollIntoView({ behavior: "smooth", block: "start" });
+  if (getMarkdown && scrollToLine) {
+    const markdown = getMarkdown();
+    const lineNumber = findHeaderInMarkdown(markdown, header);
+    if (lineNumber) scrollToLine(lineNumber);
+  }
 };
 
 const createTOCItem = (header, onScroll) => {
@@ -106,7 +119,7 @@ const observePreview = (previewHtml, update) => {
   return () => observer.disconnect();
 };
 
-export const createTOC = (previewHtml, previewContainer) => {
+export const createTOC = (previewHtml, previewContainer, { getMarkdown, scrollToLine } = {}) => {
   const button = createElement(
     "iconify-icon",
     {
@@ -127,9 +140,11 @@ export const createTOC = (previewHtml, previewContainer) => {
   previewContainer.appendChild(wrapper);
   createHoverHandlers(button, dropdown);
 
+  const onScroll = (header) => scrollToHeader(header, getMarkdown, scrollToLine);
+
   const update = () => {
     const headers = extractHeaders(previewHtml);
-    updateTOCList(dropdown, headers, scrollToHeader);
+    updateTOCList(dropdown, headers, onScroll);
   };
 
   update();
