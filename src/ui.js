@@ -5,10 +5,11 @@ import { setupHotkeys } from './hotkeys.js'
 import { createPreviewManager, createResizeHandler } from './resize.js'
 import createToolbar from './toolbar.js'
 import { createTOC } from './toc.js'
+import { createScrollSync } from './sync.js'
 import { applyTheme, createPointerHandler, createToast, getPrefTheme } from './utils.js'
 
 // Initialize UI components
-export const initUI = async ({ getMarkdown, setMarkdown, scrollToLine }) => {
+export const initUI = async ({ getMarkdown, setMarkdown, scrollToLine, view }) => {
 	// Setup toast
 	const toast = document.getElementById('toast')
 	const showToast = createToast(toast)
@@ -50,11 +51,26 @@ export const initUI = async ({ getMarkdown, setMarkdown, scrollToLine }) => {
 		createTOC(previewHtml, previewContainer, { getMarkdown, scrollToLine })
 	}
 
+	// Setup editor sync
+	let editorSync = null
+	if (view && previewContainer) {
+		editorSync = createScrollSync(view, previewContainer, getMarkdown, scrollToLine)
+		const syncEnabled = localStorage.getItem('editor-sync-enabled') === 'true'
+		if (syncEnabled) {
+			editorSync.enable()
+		}
+		const btn = document.getElementById('toggle-editor-sync')
+		if (btn) {
+			btn.setAttribute('aria-pressed', String(syncEnabled))
+		}
+	}
+
 	// Expose markdown functions globally for button access
 	window.getMarkdown = getMarkdown
 	window.setMarkdown = setMarkdown
 	window.previewManager = previewManager
 	window.showToast = showToast
+	window.editorSync = editorSync
 	window.readClipboardSmart = async () => {
 		const { readClipboardSmart } = await import('./utils.js')
 		return readClipboardSmart()

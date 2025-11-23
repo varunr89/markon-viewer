@@ -92,5 +92,5 @@ export const createEditor = async () => {
 	// Expose storage cleanup and profiler
 	const cleanup = () => storage?.cleanup()
 
-	return { getMarkdown, setMarkdown, onMarkdownUpdated, cleanup, profiler, scrollToLine }
+	return { getMarkdown, setMarkdown, onMarkdownUpdated, cleanup, profiler, scrollToLine, view }
 }

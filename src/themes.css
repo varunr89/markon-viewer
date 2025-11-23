@@ -481,6 +481,102 @@ html[data-theme="tokyo-night"][data-mode="light"] {
 	--error: #e53e3e;
 }
 
+html[data-theme="ayu"][data-mode="dark"] {
+	--bg: #1f2430;
+	--bg-light: #232834;
+	--text: #cbccc6;
+	--brand: #ffcc66;
+	--accent: #73d0ff;
+	--primary: #d4bfff;
+	--secondary: #bae67e;
+	--comment: #5c6773;
+	--meta: #5ccfe6;
+	--operator: #73d0ff;
+	--keyword: #ffa759;
+	--regex: #95e6cb;
+	--property: #5ccfe6;
+	--string: #bae67e;
+	--literal: #d4bfff;
+	--hint: #73d0ff;
+
+	--success: #bae67e;
+	--warning: #ffa759;
+	--info: #73d0ff;
+	--error: #ff3333;
+}
+
+html[data-theme="ayu"][data-mode="light"] {
+	--bg: #fafafa;
+	--bg-light: #ffffff;
+	--text: #5c6773;
+	--brand: #ff9940;
+	--accent: #399ee6;
+	--primary: #a37acc;
+	--secondary: #86b300;
+	--comment: #abb0b6;
+	--meta: #55b4d4;
+	--operator: #399ee6;
+	--keyword: #fa8d3e;
+	--regex: #4cbf99;
+	--property: #55b4d4;
+	--string: #86b300;
+	--literal: #a37acc;
+	--hint: #399ee6;
+
+	--success: #86b300;
+	--warning: #fa8d3e;
+	--info: #399ee6;
+	--error: #f51818;
+}
+
+html[data-theme="catppuccin"][data-mode="dark"] {
+	--bg: #1e1e2e;
+	--bg-light: #313244;
+	--text: #cdd6f4;
+	--brand: #f38ba8;
+	--accent: #89b4fa;
+	--primary: #cba6f7;
+	--secondary: #a6e3a1;
+	--comment: #6c7086;
+	--meta: #fab387;
+	--operator: #94e2d5;
+	--keyword: #f38ba8;
+	--regex: #fab387;
+	--property: #89b4fa;
+	--string: #a6e3a1;
+	--literal: #f9e2af;
+	--hint: #89dceb;
+
+	--success: #a6e3a1;
+	--warning: #f9e2af;
+	--info: #89b4fa;
+	--error: #f38ba8;
+}
+
+html[data-theme="catppuccin"][data-mode="light"] {
+	--bg: #eff1f5;
+	--bg-light: #ccd0da;
+	--text: #4c4f69;
+	--brand: #d20f39;
+	--accent: #1e66f5;
+	--primary: #8839ef;
+	--secondary: #40a02b;
+	--comment: #9ca0b0;
+	--meta: #fe640b;
+	--operator: #179299;
+	--keyword: #d20f39;
+	--regex: #fe640b;
+	--property: #1e66f5;
+	--string: #40a02b;
+	--literal: #df8e1d;
+	--hint: #04a5e5;
+
+	--success: #40a02b;
+	--warning: #df8e1d;
+	--info: #1e66f5;
+	--error: #d20f39;
+}
+
 /* Default theme fallback */
 html:not([data-theme]) {
 	--bg: #1a0f1f;

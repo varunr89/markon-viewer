@@ -692,23 +692,23 @@ button {
 
 @keyframes gradientShift {
   0% {
-    background-position: 0% 50%;
+    background-position: 0% 0%;
   }
 
   25% {
-    background-position: 100% 0%;
-  }
-
-  50% {
     background-position: 100% 100%;
   }
 
+  50% {
+    background-position: 200% 200%;
+  }
+
   75% {
-    background-position: 0% 100%;
+    background-position: 300% 300%;
   }
 
   100% {
-    background-position: 0% 50%;
+    background-position: 400% 400%;
   }
 }
 

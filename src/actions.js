@@ -238,6 +238,30 @@ const ACTIONS_CONFIG = [
 		},
 	},
 	{
+		id: 'toggle-editor-sync',
+		label: 'Sync',
+		icon: 'tabler:arrow-autofit-height-filled',
+		hotkey: 'ctrl+e',
+		gradient: 'linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(147, 51, 234, 0.2))',
+		showInToolbar: false,
+		handler: showToast => {
+			const currentState = localStorage.getItem('editor-sync-enabled') === 'true'
+			const enabled = !currentState
+			localStorage.setItem('editor-sync-enabled', String(enabled))
+
+			const btn = document.getElementById('toggle-editor-sync')
+			if (btn) {
+				btn.setAttribute('aria-pressed', String(enabled))
+			}
+
+			if (window.editorSync) {
+				enabled ? window.editorSync.enable() : window.editorSync.disable()
+			}
+			showToast(`sync: ${enabled ? 'on' : 'off'}`, 1200, 'tabler:arrow-autofit-height-filled')
+		},
+		isToggle: true,
+	},
+	{
 		id: 'toggle-profiler',
 		label: 'Profiler',
 		icon: 'tabler:gauge-filled',

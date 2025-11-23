@@ -1,4 +1,5 @@
 import { HOTKEYS } from './settings.js'
+import { getActionHandlers } from './actions.js'
 import { $ } from './utils.js'
 
 // Key event handler
@@ -34,6 +35,16 @@ export const createKeyHandler = settingsDialog => e => {
 		// Special handling for toggle-preview
 		if (targetId === 'preview-toggle' && window.previewManager) {
 			window.previewManager.toggle()
+			return
+		}
+
+		// Special handling for toggle-editor-sync (button may not exist in DOM)
+		if (targetId === 'toggle-editor-sync') {
+			const handlers = getActionHandlers()
+			const handler = handlers[targetId]
+			if (handler && window.showToast) {
+				handler(window.showToast)
+			}
 			return
 		}
 
