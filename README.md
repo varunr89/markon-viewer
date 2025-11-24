@@ -30,6 +30,15 @@
 - **Hotkeys**: keyboard shortcuts
 - **Offline**: no network required
 
+## Development
+
+```bash
+npm run dev      # start dev server
+npm run build    # build for production
+npm run check    # lint code
+npm run fix      # fix lint issues
+```
+
 ## Language Loading & Caching
 
 **markon** uses **lazy loading** for syntax highlighting to keep the app fast and lightweight:
@@ -47,9 +56,9 @@
 - [ ] **VIMODE**: codemirror-vim
 - [x] **Autosave**: local persistence
 - [ ] **Export**: PDF/HTML
-- [ ] **Mobile**: touch gestures
+- [x] **Mobile**: touch gestures
 - [x] **PWA**: installable, offline cache
-- [ ] **Scroll**: toggle scroll follow
+- [x] **Scroll**: toggle scroll follow
 - [ ] **Share**: url hash content
 - [x] **Snap**: split resize snapping
 - [x] **Shortcuts**: command palette

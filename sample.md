@@ -21,9 +21,9 @@
 - [ ] **VIMODE**: codemirror-vim
 - [x] **Autosave**: local persistence
 - [ ] **Export**: PDF/HTML
-- [ ] **Mobile**: touch gestures
+- [x] **Mobile**: touch gestures
 - [x] **PWA**: installable, offline cache
-- [ ] **Scroll**: toggle scroll follow
+- [x] **Scroll**: toggle scroll follow
 - [ ] **Share**: url hash content
 - [x] **Snap**: split resize snapping
 - [x] **Shortcuts**: command palette
