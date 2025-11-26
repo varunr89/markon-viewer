@@ -218,7 +218,7 @@ const getThemeColors = themeName => {
 
 export const getPrefTheme = () => {
 	const params = new URLSearchParams(window.location.search)
-	const theme = params.get('theme') || localStorage.getItem('theme-name') || 'tokyo-night'
+	const theme = params.get('theme') || localStorage.getItem('theme-name') || 'solarized'
 	const mode = params.get('mode') || localStorage.getItem('theme-mode') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark')
 
 	return { theme, mode }
