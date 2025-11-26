@@ -89,6 +89,11 @@ export const createSettingsDialog = showToast => {
 	}
 
 	const hide = () => {
+		// Move toast back to body if it's inside the dialog
+		const toast = document.getElementById('toast')
+		if (toast && dialog.contains(toast)) {
+			document.body.appendChild(toast)
+		}
 		dialog.close()
 		dialog.remove()
 	}
@@ -99,6 +104,14 @@ export const createSettingsDialog = showToast => {
 	dialog.addEventListener('click', e => {
 		if (e.target === dialog) {
 			hide()
+		}
+	})
+
+	// Move toast back to body when dialog closes (handles ESC key, etc.)
+	dialog.addEventListener('close', () => {
+		const toast = document.getElementById('toast')
+		if (toast && dialog.contains(toast)) {
+			document.body.appendChild(toast)
 		}
 	})
 

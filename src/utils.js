@@ -14,7 +14,7 @@ const styles = `
 	border-radius: 16px;
 	box-shadow: 0 8px 32px var(--accent-alpha), 0 0 0 1px var(--accent-alpha);
 	backdrop-filter: blur(16px);
-	z-index: 1100;
+	z-index: 10001;
 	max-width: 90vw;
 	white-space: nowrap;
 	opacity: 0;
@@ -58,10 +58,21 @@ export const createToast =
 		const textEl = el('span', { textContent: msg })
 		toast.appendChild(textEl)
 
+		// Move toast into open dialog if one exists (to appear above dialog)
+		const openDialog = document.querySelector('dialog[open]')
+		const originalParent = toast.parentNode
+		if (openDialog && toast.parentNode !== openDialog) {
+			openDialog.appendChild(toast)
+		}
+
 		toast.removeAttribute('hidden')
 		clearTimeout(window.__toastTimer)
 		window.__toastTimer = setTimeout(() => {
 			toast.setAttribute('hidden', '')
+			// Move toast back to original location if it was moved
+			if (originalParent && toast.parentNode !== originalParent) {
+				originalParent.appendChild(toast)
+			}
 		}, ms)
 	}
 
