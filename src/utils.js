@@ -4,7 +4,7 @@ export const el = (tag, attrs = {}) => Object.assign(document.createElement(tag)
 const styles = `
 #toast {
 	position: fixed;
-	bottom: 20px;
+	bottom: 60px;
 	left: 50%;
 	color: var(--accent);
 	transform: translateX(-50%);
