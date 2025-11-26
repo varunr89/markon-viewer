@@ -26,8 +26,11 @@
 
 - **GFM**: GitHub Flavored Markdown + alerts
 - **Syntax**: 250+ languages with highlighting
-- **Split view**: resizable editor & preview
-- **Auto-save**: localStorage persistence
+- **Split views**: resizable editor & preview
+- **Sync views**: bidirectional scroll sync
+- **Auto save**: localStorage persistence
+- **FPS profiler**: latency metrics overlay
+- **Spell checker**: toggleable browser spellcheck
 - **Themes**: multiple presets
 - **Hotkeys**: keyboard shortcuts
 - **Offline**: no network required
