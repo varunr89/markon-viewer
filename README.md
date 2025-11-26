@@ -6,16 +6,18 @@
     Minimal distraction-free live Markdown editor
   </strong>
   <br>
-  <h3>
-    <a href="https://metaory.github.io/markon">metaory.github.io/markon</a>
-  </h3>
+  <br>
+  <img src="public/logo.svg" alt="screenshot" width="18%" />
+  <br>
   <br>
   <a href="https://metaory.github.io/markon">
     <img src="https://img.shields.io/badge/PWA-Installable-blue?style=for-the-badge&logo=pwa&logoColor=white" alt="PWA Installable" />
   </a>
-  <img src="public/screenshots-panda.png" alt="screenshot" width="80%" />
+  <h3>
+    <a href="https://metaory.github.io/markon">metaory.github.io/markon</a>
+  </h3>
 </div>
-
+<hr>
 <div align="center">
   <a href="#development">Development</a> • <a href="#themes">Themes</a> • <a href="#roadmap">Roadmap</a>
 </div>
