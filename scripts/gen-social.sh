@@ -1,7 +1,7 @@
 #!/bin/bash
 
 W=1280 H=640 BG="transparent" SCALE=82 X=50 Y=30 STACK=25 LOGO_SIZE=200 RADIUS=20
-THEME="${1:-'tokyo-night'}"
+THEME="${1:-panda}"
 URL="http://localhost:5173?theme=${THEME}&mode"
 OUT="public/screenshots-${THEME}.png"
 
