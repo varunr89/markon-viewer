@@ -5,7 +5,7 @@
   "version": "1.21.4",
   "type": "module",
   "bugs": "https://github.com/metaory/markon/issues",
-  "homepage": "https://metaory.github.io/markon/",
+  "homepage": "https://getmarkon.com",
   "repository": "git+https://github.com/metaory/markon.git",
   "scripts": {
     "dev": "vite",

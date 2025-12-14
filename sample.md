@@ -2,7 +2,7 @@
 
 ## Minimal distraction-free live Markdown editor
 
-[metaory.github.io/markon](https://metaory.github.io/markon)
+[getmarkon.com](https://getmarkon.com)
 
 ---
 

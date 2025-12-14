@@ -1,6 +1,6 @@
 #!/bin/bash
 
-URL="http://localhost:5173/markon/themes"
+URL="http://localhost:5173/themes"
 WIDTH=780
 HEIGHT=800
 OUTPUT="public/themes.png"

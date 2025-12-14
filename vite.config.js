@@ -3,7 +3,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 import pkg from './package.json' with { type: 'json' }
 
 export default defineConfig({
-	base: '/markon/',
+	base: '/',
 	define: {
 		'import.meta.env.VERSION': JSON.stringify(pkg.version),
 	},
@@ -54,8 +54,8 @@ export default defineConfig({
 				background_color: '#e2e2ee88',
 				display: 'standalone',
 				orientation: 'portrait-primary',
-				scope: '/markon/',
-				start_url: '/markon/',
+				scope: '/',
+				start_url: '/',
 				icons: [
 					{
 						src: 'icon-192.png',
