@@ -7,7 +7,7 @@
   </strong>
   <br>
   <br>
-  <img src="public/logo.svg" alt="screenshot" width="18%" />
+  <img src="public/logo.png" alt="screenshot" width="18%" />
   <br>
   <br>
   <a href="https://getmarkon.com">
