@@ -2,7 +2,7 @@
   "name": "markon",
   "private": true,
   "description": "Minimal distraction-free live Markdown editor",
-  "version": "1.21.4",
+  "version": "1.21.5",
   "type": "module",
   "bugs": "https://github.com/getmarkon/markon/issues",
   "homepage": "https://getmarkon.com",
