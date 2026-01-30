@@ -15,11 +15,12 @@ const createStorageWorker = () => {
 			const { type, content } = event.data
 
 			switch (type) {
-				case 'CONTENT_LOADED':
+				case 'CONTENT_LOADED': {
 					// Worker loaded content from IndexedDB
-					// Skip if URL params were used to load content (content or url params)
+					// Skip if URL params or hash were used to load content
 					const params = new URLSearchParams(window.location.search)
-					if (params.has('content') || params.has('url')) {
+					const hash = window.location.hash.slice(1)
+					if (params.has('content') || params.has('url') || hash) {
 						// Don't overwrite URL-loaded content
 						break
 					}
@@ -27,6 +28,7 @@ const createStorageWorker = () => {
 						window.setMarkdown?.(content)
 					}
 					break
+				}
 			}
 		}
 

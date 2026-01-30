@@ -11,6 +11,17 @@ import { createProfiler } from './profiler.js'
 const readDefaultMarkdown = async () => {
 	const params = new URLSearchParams(window.location.search)
 
+	// Check for hash fragment (base64-encoded markdown) - no length limit
+	const hash = window.location.hash.slice(1) // Remove the # prefix
+	if (hash) {
+		try {
+			return atob(decodeURIComponent(hash))
+		} catch {
+			// If not valid base64, try as plain text
+			return decodeURIComponent(hash)
+		}
+	}
+
 	// Check for ?content= parameter (base64-encoded markdown)
 	const contentParam = params.get('content')
 	if (contentParam) {
