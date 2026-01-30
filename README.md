@@ -7,16 +7,16 @@
   </strong>
   <br>
   <br>
-  <a href="https://getmarkon.com">
+  <a href="https://varunr89.github.io/markon-viewer/">
     <img src="https://img.shields.io/badge/PWA-Installable-blue?style=for-the-badge&logo=pwa&logoColor=white" alt="PWA Installable" />
   </a>
   <h2>
-    <a href="https://getmarkon.com">getmarkon.com</a>
+    <a href="https://varunr89.github.io/markon-viewer/">varunr89.github.io/markon-viewer</a>
   </h2>
 </div>
 <hr>
 <div align="center">
-  <a href="#development">Development</a> • <a href="#themes">Themes</a> • <a href="#roadmap">Roadmap</a>
+  <a href="#windows-installation">Windows Installation</a> • <a href="#development">Development</a> • <a href="#themes">Themes</a> • <a href="#roadmap">Roadmap</a>
 	<img src="public/screenshots.png" width="80%" />
 </div>
 
@@ -32,18 +32,49 @@
 - **Themes**: multiple presets
 - **Hotkeys**: keyboard shortcuts
 - **Offline**: no network required
+- **Open local files**: double-click `.md` files to open in Markon (Windows)
 
-## Language Loading & Caching
+---
 
-**markon** uses **lazy loading** for syntax highlighting to keep the app fast and lightweight:
+## Windows Installation
 
-- **On-demand loading**: Language modules are only loaded when you use them
-- **Smart caching**: Once loaded, languages work offline in future sessions
-- **250+ languages**: Full highlight.js support with minimal initial bundle size
-- **PWA optimized**: Cached languages persist across app updates
+Set Markon as the default application for opening `.md` and `.markdown` files on Windows.
 
-> [!TIP]
-> **Offline behavior**: Languages you've used before will work offline. New languages require an internet connection to load initially.
+### Quick Install
+
+1. Download or clone this repository
+2. Navigate to `scripts/windows/`
+3. **Right-click `install.bat`** and select **"Run as administrator"**
+
+That's it! Double-clicking any `.md` file will now open it in Markon.
+
+### Manual Install
+
+If you prefer to install manually:
+
+1. Copy `scripts/windows/open-with-markon.ps1` to `C:\Users\<YourUsername>\`
+2. Copy `scripts/windows/open-with-markon.bat` to `C:\Users\<YourUsername>\`
+3. Run `scripts/windows/install.bat` or manually add the registry entries
+
+### Uninstall
+
+Run `scripts/windows/uninstall.bat` to remove Markon as the default handler.
+
+### How it Works
+
+When you double-click a `.md` file:
+1. The batch script reads the file content
+2. Base64-encodes it and creates a temporary HTML redirect
+3. Opens the browser with the content in the URL hash fragment
+4. Markon decodes and displays the content
+
+### URL Parameters
+
+You can also open content directly via URL:
+
+- **Hash fragment (recommended)**: `https://varunr89.github.io/markon-viewer/#<base64-encoded-content>`
+- **Query parameter**: `https://varunr89.github.io/markon-viewer/?content=<base64-encoded-content>`
+- **Fetch from URL**: `https://varunr89.github.io/markon-viewer/?url=<url-to-markdown-file>`
 
 ---
 
@@ -180,7 +211,7 @@ Themes are automatically detected and appear in the settings dialog. Both `dark`
 - [x] **Mobile**: touch gestures
 - [x] **PWA**: installable, offline cache
 - [x] **Scroll**: toggle scroll follow
-- [ ] **Share**: ~~url hash content~~
+- [x] **Share**: url hash content
 - [x] **Snap**: split resize snapping
 - [x] **Shortcuts**: command palette
 - [x] **Theming**: custom CSS look
