@@ -8,7 +8,35 @@ import { editorThemeExtensions } from './style.js'
 import { createStorage } from './storage.js'
 import { createProfiler } from './profiler.js'
 
-const readDefaultMarkdown = async () => sampleMd || '# markon\n\nStart typing...'
+const readDefaultMarkdown = async () => {
+	const params = new URLSearchParams(window.location.search)
+
+	// Check for ?content= parameter (base64-encoded markdown)
+	const contentParam = params.get('content')
+	if (contentParam) {
+		try {
+			return atob(contentParam)
+		} catch {
+			// If not valid base64, try URL-decoded plain text
+			return decodeURIComponent(contentParam)
+		}
+	}
+
+	// Check for ?url= parameter (fetch markdown from URL)
+	const urlParam = params.get('url')
+	if (urlParam) {
+		try {
+			const response = await fetch(urlParam)
+			if (response.ok) {
+				return await response.text()
+			}
+		} catch (error) {
+			console.warn('Failed to fetch URL content:', error)
+		}
+	}
+
+	return sampleMd || '# markon\n\nStart typing...'
+}
 
 export const createEditor = async () => {
 	let view = null
